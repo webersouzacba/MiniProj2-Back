@@ -5,6 +5,29 @@
 
 ---
 
+## 🔗 Acesso à Aplicação
+
+Para facilitar a avaliação, a aplicação Animalec foi disponibilizada de duas formas:
+
+### ✅ Opção A — Acesso remoto (VPS HostGator)
+
+A aplicação está implantada num **VPS Linux** e pode ser acedida diretamente pelo navegador:
+
+- **Frontend (SPA Vue.js)**  
+  `http://69.6.220.255:8081`
+
+- **Credenciais de teste (backoffice)**  
+  - Utilizador: `admin`  
+  - Password: `admin`
+
+> Esta instância remota utiliza o mesmo código deste repositório e a mesma base de dados (`test`) restaurada a partir do dump em `database/test`.
+
+### ✅ Opção B — Execução local a partir do repositório
+
+O avaliador pode, em alternativa, clonar este repositório e executar a aplicação localmente (ver secção **“Execução local”** abaixo).
+
+---
+
 ## 📌 Enquadramento da Tarefa
 
 Este repositório corresponde ao **MiniProj2-Back**, exigido na **Tarefa 3.2 e 3.3 – Miniprojeto Frontend e Backend** da UC **Programação Web Avançada 2025**.
@@ -13,76 +36,76 @@ O projeto é baseado no caso de estudo **Animalec** do livro:
 
 > QUEIRÓS, Ricardo; PORTELA, Filipe. *Desenvolvimento Avançado para a Web* – Projeto Animalec.
 
-### Fases da tarefa
+### Fases da tarefa (segundo enunciado)
 
-1. Implementar na **API** os endpoints referentes às novas entidades (tarefa 3.2):  
-   - **Patrocinadores (Sponsors / Patrocinadores)**  
-   - **Especialistas (Experts / Especialistas)**  
+1. Implementar na **API** os endpoints referentes às novas entidades, já prototipadas na Tarefa 3.2:
+   - **Patrocinadores (Sponsors / Patrocinadores)**
+   - **Especialistas (Experts / Especialistas)**
 
-2. Submeter **todos os ficheiros** do projeto (frontend + backend + projeto base) num repositório Git individual com o nome **MiniProj2-Back**.
+2. Submeter todos os ficheiros (frontend + backend + projeto base) num repositório Git individual com o nome **MiniProj2-Back**.
 
-3. A entrega na plataforma consiste apenas na **indicação do link** para este repositório.
+3. Entregar na plataforma apenas o **link para este repositório**.
 
-4. Participar no **debate no fórum** da UC, apoiando colegas e discutindo soluções.
+4. Participar no **debate no fórum**, discutindo soluções e apoiando colegas.
 
 ---
 
 ## 🎯 Objetivo do Projeto
 
-Evoluir o **protótipo estático** da Tarefa 3.1b para uma aplicação **full stack**, com:
+Evoluir o protótipo estático da **Tarefa 3.1b** para uma aplicação **full stack**, com:
 
-- **Front-end** em Vue.js (SPA) para:
+- **Front-end** em Vue.js (SPA)
   - Área pública;
-  - Área de administração (backoffice).
+  - Backoffice (admin) com gestão de entidades.
 
-- **Back-end** em Node.js / Express:
+- **Back-end** em Node.js / Express
   - API RESTful;
-  - Conexão com MongoDB;
-  - Gestão de autenticação e permissões.
+  - Persistência em MongoDB;
+  - Autenticação e gestão de utilizadores.
 
-- **Base de dados MongoDB** com:
-  - Entidades base do Animalec;
-  - Entidades estendidas **Patrocinadores** e **Especialistas**;
-  - Dump completo incluído neste repositório para reprodutibilidade (`database/test`).
+- **Base de dados MongoDB** (`test`)
+  - Entidades originais do Animalec;
+  - Entidades estendidas:
+    - **Patrocinadores**
+    - **Especialistas**
+  - Dump completo incluído em `database/test`.
 
 ---
 
 ## 🧩 Relação com a Tarefa 3.1b (Prototipagem)
 
-A tarefa anterior (**Tarefa 3.1b – Prototipagem de Interfaces Web**) produziu:
+Na **Tarefa 3.1b – Prototipagem de Interfaces Web**, foram produzidos:
 
-- **Wireframes** (estrutura);  
-- **Mockups** (design visual);  
-- **Protótipos HTML5 semânticos** (navegação simulada);
+- **Wireframes**
+- **Mockups**
+- **Protótipos HTML5 semânticos**
 
 para a extensão do backoffice do Animalec, incluindo:
 
 - Listagem, criação e edição de **Patrocinadores**;
 - Listagem, criação e edição de **Especialistas**.
 
-Nesta Tarefa 3.2/3.3:
+Na Tarefa 3.2/3.3, estes artefatos serviram como **base direta para:**
 
-- Esses protótipos foram usados como **guia direto** para:
-  - componentes Vue;
-  - rotas e navegação;
-  - formulários e validações.
-- A API Node/Express foi desenhada para expor os endpoints REST que suportam essas telas.
+- Definição dos componentes Vue (listas, formulários, detalhes);
+- Implementação das rotas e navegação do backoffice;
+- Mapeamento dos endpoints REST no backend.
 
 ---
 
-## 🧱 Arquitetura e Estrutura do Repositório
+## 🧱 Estrutura do Repositório
 
 ```text
 MiniProj2-Back/
 ├── Back-end_Animalec-master/      # API REST em Node.js / Express / MongoDB
 │   ├── app.js                     # Ponto de entrada da aplicação backend
 │   ├── package.json
-│   └── ...                        # Código do projeto base + extensões
+│   └── ...                        # Projeto base + endpoints estendidos
 │
 ├── Front-end_Animalec-master/     # SPA em Vue.js (frontend + backoffice)
 │   ├── src/
 │   │   ├── api/config.js          # Configuração da URL base da API
-│   │   └── ...                    # Componentes, rotas, vistas, etc.
+│   │   └── ...                    # Componentes, rotas, vistas, store, etc.
 │   ├── package.json
 │   └── ...
 │
@@ -109,5 +132,5 @@ MiniProj2-Back/
 │       ├── users.bson.gz
 │       └── users.metadata.json.gz
 │
-├── Start_Animalec.bat             # Script auxiliar para execução local (Windows)
+├── Start_Animalec.bat             # Script auxiliar para ambiente Windows
 └── README.md                      # Este documento
