@@ -1,81 +1,113 @@
-# 🐾 Animalec — Miniprojeto Full Stack  
+# 🐾 MiniProj2-Back — Animalec (Frontend + Backend)
 **MEIW – UTAD / Programação Web Avançada 2025**  
 **Ano letivo:** 2025/2026  
-**Autor:** Weber Marcelo Guirra de Souza  
+**Aluno:** Weber Marcelo Guirra de Souza  
 
 ---
 
-## 📌 Enquadramento da Atividade
+## 📌 Enquadramento da Tarefa
 
-Este repositório corresponde ao **Miniprojeto Animalec**, desenvolvido no âmbito da UC **Programação Web Avançada 2025**, integrando as atividades:
-
-- **Tarefa 3.1b – Prototipagem de Interfaces Web**  
-  - Wireframes, mockups e protótipos HTML5 para a extensão da área de administração do Animalec.
-
-- **Tarefa 3.2 – Miniprojeto: Desenvolvimento do front-end**  
-  - Implementação de uma SPA em Vue.js, baseada nos protótipos da Tarefa 3.1b.
-
-- **Tarefa 3.3 – Miniprojeto: Desenvolvimento do back-end**  
-  - Implementação da API REST (Node.js/Express + MongoDB) que suporta as funcionalidades do front-end.
+Este repositório corresponde ao **MiniProj2-Back**, exigido na **Tarefa 3.2 e 3.3 – Miniprojeto Frontend e Backend** da UC **Programação Web Avançada 2025**.
 
 O projeto é baseado no caso de estudo **Animalec** do livro:
 
 > QUEIRÓS, Ricardo; PORTELA, Filipe. *Desenvolvimento Avançado para a Web* – Projeto Animalec.
 
+### Fases da tarefa
+
+1. Implementar na **API** os endpoints referentes às novas entidades (tarefa 3.2):  
+   - **Patrocinadores (Sponsors / Patrocinadores)**  
+   - **Especialistas (Experts / Especialistas)**  
+
+2. Submeter **todos os ficheiros** do projeto (frontend + backend + projeto base) num repositório Git individual com o nome **MiniProj2-Back**.
+
+3. A entrega na plataforma consiste apenas na **indicação do link** para este repositório.
+
+4. Participar no **debate no fórum** da UC, apoiando colegas e discutindo soluções.
+
 ---
 
 ## 🎯 Objetivo do Projeto
 
-O objetivo principal é **evoluir o protótipo estático** (HTML5/CSS) da Tarefa 3.1b para uma **aplicação web full stack**, com:
+Evoluir o **protótipo estático** da Tarefa 3.1b para uma aplicação **full stack**, com:
 
-- **Front-end dinâmico** em Vue.js (SPA);  
-- **Back-end REST** em Node.js/Express;  
-- **Persistência de dados** em MongoDB;  
-- **Autenticação e área de administração** para gestão das entidades do Animalec.
+- **Front-end** em Vue.js (SPA) para:
+  - Área pública;
+  - Área de administração (backoffice).
 
-Além das entidades já presentes no projeto do livro, o miniprojeto estende a área de administração com:
+- **Back-end** em Node.js / Express:
+  - API RESTful;
+  - Conexão com MongoDB;
+  - Gestão de autenticação e permissões.
 
-- **Patrocinadores (Sponsors)**  
-- **Especialistas (Experts)**  
-
-Seguindo o mesmo padrão visual e de navegação da administração original.
+- **Base de dados MongoDB** com:
+  - Entidades base do Animalec;
+  - Entidades estendidas **Patrocinadores** e **Especialistas**;
+  - Dump completo incluído neste repositório para reprodutibilidade (`database/test`).
 
 ---
 
 ## 🧩 Relação com a Tarefa 3.1b (Prototipagem)
 
-A Tarefa 3.1b produziu:
+A tarefa anterior (**Tarefa 3.1b – Prototipagem de Interfaces Web**) produziu:
 
-- **Wireframes**  
-- **Mockups**  
-- **Protótipos HTML5 semânticos**
+- **Wireframes** (estrutura);  
+- **Mockups** (design visual);  
+- **Protótipos HTML5 semânticos** (navegação simulada);
 
-para as páginas de:
+para a extensão do backoffice do Animalec, incluindo:
 
-- Listagem, criação e edição de **Patrocinadores**;  
+- Listagem, criação e edição de **Patrocinadores**;
 - Listagem, criação e edição de **Especialistas**.
 
-Na Tarefa 3.2 e 3.3, estes artefatos foram usados como **guia direto** para:
+Nesta Tarefa 3.2/3.3:
 
-- Definir a navegação e o layout do back-office em Vue.js;  
-- Implementar os componentes de lista, detalhe e formulários;  
-- Mapear as rotas do front-end para os endpoints REST do back-end;  
-- Garantir consistência entre **protótipo** e **aplicação final**.
+- Esses protótipos foram usados como **guia direto** para:
+  - componentes Vue;
+  - rotas e navegação;
+  - formulários e validações.
+- A API Node/Express foi desenhada para expor os endpoints REST que suportam essas telas.
 
 ---
 
-## 🧱 Arquitetura Geral do Repositório
+## 🧱 Arquitetura e Estrutura do Repositório
 
-```txt
-Animalec/
-├── Back-end_Animalec-master/     # API REST em Node.js / Express / MongoDB
-├── Front-end_Animalec-master/    # SPA em Vue.js (área pública + administração)
-└── database/
-    └── test/                     # Dump MongoDB (mongodump) da base 'test'
-        ├── animals.bson.gz
-        ├── animals.metadata.json.gz
-        ├── especialistas.bson.gz
-        ├── especialistas.metadata.json.gz
-        ├── patrocionadores.bson.gz
-        ├── ...
-        └── users.bson.gz
+```text
+MiniProj2-Back/
+├── Back-end_Animalec-master/      # API REST em Node.js / Express / MongoDB
+│   ├── app.js                     # Ponto de entrada da aplicação backend
+│   ├── package.json
+│   └── ...                        # Código do projeto base + extensões
+│
+├── Front-end_Animalec-master/     # SPA em Vue.js (frontend + backoffice)
+│   ├── src/
+│   │   ├── api/config.js          # Configuração da URL base da API
+│   │   └── ...                    # Componentes, rotas, vistas, etc.
+│   ├── package.json
+│   └── ...
+│
+├── database/
+│   └── test/                      # Dump MongoDB (mongodump) da base `test`
+│       ├── animals.bson.gz
+│       ├── animals.metadata.json.gz
+│       ├── especialistas.bson.gz
+│       ├── especialistas.metadata.json.gz
+│       ├── experts.bson.gz
+│       ├── experts.metadata.json.gz
+│       ├── niveis_patrocinio.bson.gz
+│       ├── niveis_patrocinio.metadata.json.gz
+│       ├── patrocinadores.bson.gz
+│       ├── patrocinadores.metadata.json.gz
+│       ├── questions.bson.gz
+│       ├── questions.metadata.json.gz
+│       ├── quizzes.bson.gz
+│       ├── quizzes.metadata.json.gz
+│       ├── sponsors.bson.gz
+│       ├── sponsors.metadata.json.gz
+│       ├── user_levels.bson.gz
+│       ├── user_levels.metadata.json.gz
+│       ├── users.bson.gz
+│       └── users.metadata.json.gz
+│
+├── Start_Animalec.bat             # Script auxiliar para execução local (Windows)
+└── README.md                      # Este documento
